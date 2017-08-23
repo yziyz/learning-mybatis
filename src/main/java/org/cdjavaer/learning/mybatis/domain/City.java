@@ -1,26 +1,38 @@
 package org.cdjavaer.learning.mybatis.domain;
 
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  * 城市实体类
  *
  * @author 袁臻
  * 2017/08/23 13:18
  */
+@Table(name = "cities")
 public class City {
-    private Integer code;
+    /**
+     * 编码
+     */
+    @Id
+    private Integer id;
+
+    /**
+     * 名称
+     */
     private String name;
 
-    public City(Integer code, String name) {
-        this.code = code;
+    public City(Integer id, String name) {
+        this.id = id;
         this.name = name;
     }
 
-    public Integer getCode() {
-        return code;
+    public Integer getId() {
+        return id;
     }
 
-    public void setCode(Integer code) {
-        this.code = code;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {

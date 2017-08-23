@@ -1,9 +1,32 @@
+#服务器监听
 server:
   address: localhost
   port: 8000
+
+#数据源
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/test
     username: postgres
     password: 123456
+  http:
+    encoding:
+      force: true
+#分页
+pagehelper:
+  helperDialect: postgresql
+  reasonable: true
+  supportMethodArguments: true
+  params: count=countSql
+
+#日志
+#logging:
+#  level:
+#    org.cdjavaer.learning.mybatis: DEBUG
+#    org.springframework: WARN
+
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  type-aliases-package: org.apache.ibatis.type

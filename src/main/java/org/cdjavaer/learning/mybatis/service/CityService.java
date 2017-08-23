@@ -1,6 +1,8 @@
 package org.cdjavaer.learning.mybatis.service;
 
+import com.github.pagehelper.PageHelper;
 import org.cdjavaer.learning.mybatis.domain.City;
+import org.cdjavaer.learning.mybatis.dto.IndexCityDto;
 import org.cdjavaer.learning.mybatis.mapper.CityMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +17,9 @@ import java.util.List;
 @Service
 @Transactional
 public class CityService {
+    /**
+     * 城市映射实例
+     */
     private CityMapper cityMapper;
 
     @Autowired
@@ -26,7 +31,10 @@ public class CityService {
         return cityMapper.find(code);
     }
 
-    public List<City> findAll() {
-        return cityMapper.findAll();
+    public List<City> findAll(IndexCityDto dto) {
+        if (dto.getPage() != null && dto.getSize() != null) {
+            PageHelper.startPage(dto.getPage(), dto.getSize());
+        }
+        return cityMapper.findAll(dto);
     }
 }

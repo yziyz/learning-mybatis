@@ -1,5 +1,7 @@
 package org.cdjavaer.learning.mybatis;
 
+import org.cdjavaer.learning.mybatis.mapper.CityMapper;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -10,6 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * 2017/08/22 16:42
  */
 @SpringBootApplication
+@MapperScan(basePackageClasses = CityMapper.class)
 public class Application {
     /**
      * 主方法，启动应用

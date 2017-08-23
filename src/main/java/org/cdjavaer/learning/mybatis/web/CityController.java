@@ -1,12 +1,10 @@
 package org.cdjavaer.learning.mybatis.web;
 
 import org.cdjavaer.learning.mybatis.domain.City;
+import org.cdjavaer.learning.mybatis.dto.IndexCityDto;
 import org.cdjavaer.learning.mybatis.service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -32,7 +30,7 @@ public class CityController {
     }
 
     @GetMapping
-    public List<City> findAll() {
-        return cityService.findAll();
+    public List<City> findAll(@ModelAttribute IndexCityDto dto) {
+        return cityService.findAll(dto);
     }
 }
