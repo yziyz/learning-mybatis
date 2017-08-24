@@ -12,7 +12,7 @@ import javax.persistence.Table;
 @Table(name = "cities")
 public class City {
     /**
-     * 编码
+     * ID
      */
     @Id
     private Integer id;

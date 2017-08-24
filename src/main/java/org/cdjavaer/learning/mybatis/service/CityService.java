@@ -27,14 +27,14 @@ public class CityService {
         this.cityMapper = cityMapper;
     }
 
-    public City find(Integer code) {
-        return cityMapper.find(code);
+    public City select(Integer id) {
+        return cityMapper.select(id);
     }
 
-    public List<City> findAll(IndexCityDto dto) {
+    public List<City> selectAll(IndexCityDto dto) {
         if (dto.getPage() != null && dto.getSize() != null) {
             PageHelper.startPage(dto.getPage(), dto.getSize());
         }
-        return cityMapper.findAll(dto);
+        return cityMapper.selectAll(dto);
     }
 }

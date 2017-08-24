@@ -16,9 +16,9 @@ import java.util.List;
  */
 @Mapper
 public interface CityMapper {
-    @SelectProvider(type = CitySqlProvider.class, method = "findAll")
-    List<City> findAll(IndexCityDto dto);
+    @SelectProvider(type = CitySqlProvider.class, method = "selectAll")
+    List<City> selectAll(IndexCityDto dto);
 
     @SelectProvider(type = CitySqlProvider.class, method = "selectById")
-    City find(Integer id);
+    City select(Integer id);
 }

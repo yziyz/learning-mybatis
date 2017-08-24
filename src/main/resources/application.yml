@@ -20,13 +20,11 @@ pagehelper:
   supportMethodArguments: true
   params: count=countSql
 
-#日志
-#logging:
-#  level:
-#    org.cdjavaer.learning.mybatis: DEBUG
-#    org.springframework: WARN
-
+#日志和时间
 mybatis:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-  type-aliases-package: org.apache.ibatis.type
+    map-underscore-to-camel-case: true
+    default-fetch-size: 100
+    default-statement-timeout: 30
+  #type-handlers-package: org.cdjavaer.learning.mybatis.type
