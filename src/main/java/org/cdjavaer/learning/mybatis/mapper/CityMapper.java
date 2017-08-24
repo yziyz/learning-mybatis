@@ -1,7 +1,7 @@
 package org.cdjavaer.learning.mybatis.mapper;
 
-import org.apache.ibatis.annotations.*;
-import org.apache.ibatis.type.JdbcType;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.SelectProvider;
 import org.cdjavaer.learning.mybatis.domain.City;
 import org.cdjavaer.learning.mybatis.dto.IndexCityDto;
 import org.cdjavaer.learning.mybatis.service.CitySqlProvider;
@@ -16,14 +16,9 @@ import java.util.List;
  */
 @Mapper
 public interface CityMapper {
-    @Results(value = {
-            @Result(id = true, property = "id", column = "id", javaType = Integer.class, jdbcType = JdbcType.VARCHAR),
-            @Result(property = "name", column = "name", javaType = String.class, jdbcType = JdbcType.INTEGER)
-    })
-
     @SelectProvider(type = CitySqlProvider.class, method = "findAll")
     List<City> findAll(IndexCityDto dto);
 
     @SelectProvider(type = CitySqlProvider.class, method = "selectById")
-    City find(Integer code);
+    City find(Integer id);
 }
