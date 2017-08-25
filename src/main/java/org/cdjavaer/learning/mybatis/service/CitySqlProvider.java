@@ -18,7 +18,7 @@ public class CitySqlProvider extends BaseSqlProvider<City, Integer> {
      * @param dto 指定的IndexCityDto实例
      * @return 根据指定的IndexCityDto实例生成的动态SQL
      */
-    public String selectAll(final IndexCityDto dto) {
+    public String selectByDto(final IndexCityDto dto) {
         return new SQL() {
             {
                 SELECT("id", "name");

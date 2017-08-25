@@ -13,12 +13,12 @@ public class IndexCityDto {
     private String name;
 
     /**
-     * 页数
+     * 页码
      */
     private Integer page;
 
     /**
-     * 每页最多条数
+     * 每页最多结果数量
      */
     private Integer size;
 

@@ -20,10 +20,13 @@ public interface UserMapper {
     @Results(value = {
             @Result(property = "city", column = "city_id",
                     javaType = City.class, jdbcType = JdbcType.INTEGER,
-                    one = @One(select = "org.cdjavaer.learning.mybatis.mapper.CityMapper.select", fetchType = FetchType.EAGER)),
-            @Result(property = "orders", column = "id", many = @Many(select = "org.cdjavaer.learning.mybatis.mapper.OrderMapper.selectByUserId"))
+                    one = @One(select = "org.cdjavaer.learning.mybatis.mapper.CityMapper.select",
+                            fetchType = FetchType.EAGER)),
+            @Result(property = "orders", column = "id",
+                    many = @Many(select = "org.cdjavaer.learning.mybatis.mapper.OrderMapper.selectByUserId",
+                            fetchType = FetchType.LAZY))
     })
-    @Select(value = "SELECT id, name, birth_day, created_at, city_id FROM users WHERE id = #{id}")
+    @SelectProvider(type = UserSqlProvider.class, method = "selectById")
     User select(String id);
 
     @Insert(value = "INSERT INTO users(id, name, birth_day, created_at, city_id) VALUES(#{id}, #{name}, #{birthDay}, #{createdAt}, #{cityId})")

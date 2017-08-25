@@ -20,7 +20,7 @@ pagehelper:
   supportMethodArguments: true
   params: count=countSql
 
-#日志和时间
+#日志
 mybatis:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

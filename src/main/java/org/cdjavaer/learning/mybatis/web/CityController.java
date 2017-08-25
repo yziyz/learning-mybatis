@@ -41,6 +41,6 @@ public class CityController {
 
     @GetMapping
     public List<City> selectAll(@ModelAttribute IndexCityDto dto) {
-        return cityService.selectAll(dto);
+        return cityService.selectByDto(dto);
     }
 }
