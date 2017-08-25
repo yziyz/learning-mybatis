@@ -4,6 +4,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * 用户实体类
@@ -38,6 +39,11 @@ public class User {
      * 所在城市ID
      */
     private City city;
+
+    /**
+     * 订单
+     */
+    private List<Order> orders;
 
     public String getId() {
         return id;
@@ -77,5 +83,13 @@ public class User {
 
     public void setCity(City city) {
         this.city = city;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
     }
 }

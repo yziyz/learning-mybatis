@@ -20,7 +20,8 @@ public interface UserMapper {
     @Results(value = {
             @Result(property = "city", column = "city_id",
                     javaType = City.class, jdbcType = JdbcType.INTEGER,
-                    one = @One(select = "org.cdjavaer.learning.mybatis.mapper.CityMapper.select", fetchType = FetchType.EAGER))
+                    one = @One(select = "org.cdjavaer.learning.mybatis.mapper.CityMapper.select", fetchType = FetchType.EAGER)),
+            @Result(property = "orders", column = "id", many = @Many(select = "org.cdjavaer.learning.mybatis.mapper.OrderMapper.selectByUserId"))
     })
     @Select(value = "SELECT id, name, birth_day, created_at, city_id FROM users WHERE id = #{id}")
     User select(String id);
