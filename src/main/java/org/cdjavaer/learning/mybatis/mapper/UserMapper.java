@@ -18,6 +18,8 @@ import org.cdjavaer.learning.mybatis.service.UserSqlProvider;
 @Mapper
 public interface UserMapper {
     @Results(value = {
+            @Result(property = "id", column = "id",
+                    javaType = String.class, jdbcType = JdbcType.VARCHAR),
             @Result(property = "city", column = "city_id",
                     javaType = City.class, jdbcType = JdbcType.INTEGER,
                     one = @One(select = "org.cdjavaer.learning.mybatis.mapper.CityMapper.select",

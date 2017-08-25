@@ -362,7 +362,7 @@ MyBatis提供`org.apache.ibatis.annotations.One`注解来实现复杂类型的�
 * select - 获取属性值的方法的完全限定名(fully qualified name)，例如此处获取城市的方法为org.cdjavaer.learning.mybatis.mapper.CityMapper类的select方法，应写为select = "org.cdjavaer.learning.mybatis.mapper.CityMapper.select"
 * fetchType - 加载类型，分为延迟加载(LAZY)和非延迟加载(EAGER)，定义在`org.apache.ibatis.mapping.FetchType`中；
 
-创建[服务类](/home/yuanzhen/project/learning-mybatis/src/main/java/org/cdjavaer/learning/mybatis/service/UserService.java)，并添加如下方法：
+创建[服务类](./src/main/java/org/cdjavaer/learning/mybatis/service/UserService.java)，并添加如下方法：
 ```
 public User select(String id) {
     return userMapper.select(id);
@@ -375,8 +375,10 @@ public User select(String id) {
 [用户类](./src/main/java/org/cdjavaer/learning/mybatis/domain/User.java)中嵌套了一个订单类的列表(orders)，`订单表orders`中的`user_id`列对应`用户表users`的`id`列，外键约束；
 
 ## 7.2 实现
-在`映射器UserMapper`中的`方法select`的`注解@Results`中添加如下一条`注解@Result`:
+在`映射器UserMapper`中的`方法select`的`注解@Results`中添加如下两条`注解@Result`:
 ```
+@Result(property = "id", column = "id",
+                    javaType = String.class, jdbcType = JdbcType.VARCHAR),
 @Result(property = "orders", column = "id",
         many = @Many(select = "org.cdjavaer.learning.mybatis.mapper.OrderMapper.selectByUserId",
                 fetchType = FetchType.LAZY))
