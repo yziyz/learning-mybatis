@@ -1,4 +1,4 @@
-package org.cdjavaer.learning.mybatis;
+package org.cdjavaer.learning.mybatis.interceptor;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.tomcat.jdbc.pool.interceptor.StatementCache;
